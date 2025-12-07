@@ -13,6 +13,7 @@ const config = {
     path: resolve(__dirname, 'dist'),
     filename: '[name].js',
     clean: true,
+    publicPath: process.env.GITHUB_PAGES ? '/jsx-loader-demo/' : '/',
   },
   target: 'web',
   resolve: {

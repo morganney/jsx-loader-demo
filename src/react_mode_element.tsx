@@ -12,11 +12,11 @@ const ReactBadge = ({ heading }: { heading: string }) => {
   return reactJsx`
     <article className="react-card">
       <header>
-        <h2>{${heading}}</h2>
+        <h2>${heading}</h2>
         <p data-kind="react">Rendered with reactJsx</p>
       </header>
       <button type="button" onClick={${() => setClicks(value => value + 1)}}>
-        Clicked {${clicks}} times
+        Clicked ${clicks} times
       </button>
     </article>
   `
@@ -42,7 +42,7 @@ export class ReactModeDemo extends LitElement {
     const tree = reactJsx`
       <div className="react-stage">
         <${ReactShell}>
-          <${ReactBadge} heading={${'React + Lit via @knighted/jsx'}} />
+          <${ReactBadge} heading="React + Lit via @knighted/jsx" />
         </${ReactShell}>
       </div>
     `

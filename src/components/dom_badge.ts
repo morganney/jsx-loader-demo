@@ -4,8 +4,11 @@ export const DomBadge = (label: string) => {
   let clicks = 0
   const counterText = jsx`<span>Clicked ${clicks} times</span>` as HTMLSpanElement
   const badge = jsx`
-    <div class="react-card dom-card">
-      <p data-kind="react">${label}</p>
+    <article class="dom-badge">
+      <header>
+        <h2>Lit + DOM with jsx</h2>
+        <p data-kind="react">${label}</p>
+      </header>
       <button
         type="button"
         data-kind="dom-counter"
@@ -16,7 +19,7 @@ export const DomBadge = (label: string) => {
       >
         ${counterText}
       </button>
-    </div>
+    </article>
   ` as HTMLDivElement
 
   return badge

@@ -8,7 +8,7 @@ export const ReactBadge = ({ heading }: ReactBadgeProps) => {
   const [clicks, setClicks] = useState(0)
 
   return (
-    <article className="react-card">
+    <article>
       <header>
         <h2>{heading}</h2>
         <p data-kind="react">Rendered with reactJsx</p>

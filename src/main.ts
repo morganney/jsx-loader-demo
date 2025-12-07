@@ -1,4 +1,4 @@
-import './react_mode_element.js'
+import './lit_parent_element.js'
 
 const mountDemo = () => {
   if (document.querySelector('react-mode-demo')) return

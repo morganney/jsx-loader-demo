@@ -1,18 +1,16 @@
-import path from 'node:path'
+import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { rspack } from '@rspack/core'
 
 const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
-
-/** @type {import("@rspack/cli").Configuration} */
+const __dirname = dirname(__filename)
 const config = {
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   entry: {
     main: './src/main.ts',
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: resolve(__dirname, 'dist'),
     filename: '[name].js',
     clean: true,
   },
@@ -32,7 +30,7 @@ const config = {
     rules: [
       {
         test: /\.[jt]sx?$/,
-        include: [path.resolve(__dirname, 'src')],
+        include: [resolve(__dirname, 'src')],
         use: [
           {
             loader: 'builtin:swc-loader',
@@ -67,7 +65,7 @@ const config = {
   },
   devServer: {
     static: {
-      directory: path.resolve(__dirname, 'public'),
+      directory: resolve(__dirname, 'public'),
     },
     host: 'localhost',
     port: 5174,

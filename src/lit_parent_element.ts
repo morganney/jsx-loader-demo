@@ -4,28 +4,9 @@ import { LitElement, html } from 'lit'
 import { customElement } from 'lit/decorators.js'
 import { createRoot } from 'react-dom/client'
 import type { Root } from 'react-dom/client'
-import { useState, type ReactNode } from 'react'
-
-const ReactBadge = ({ heading }: { heading: string }) => {
-  const [clicks, setClicks] = useState(0)
-
-  return reactJsx`
-    <article className="react-card">
-      <header>
-        <h2>${heading}</h2>
-        <p data-kind="react">Rendered with reactJsx</p>
-      </header>
-      <button type="button" onClick={${() => setClicks(value => value + 1)}}>
-        Clicked ${clicks} times
-      </button>
-    </article>
-  `
-}
-
-const ReactShell = ({ children }: { children: ReactNode }) =>
-  reactJsx`
-    <div className="react-shell">${children}</div>
-  `
+import { DomBadge } from './components/dom_badge.js'
+import { ReactBadge } from './components/react_badge.js'
+import { ReactShell } from './components/react_shell.js'
 
 @customElement('react-mode-demo')
 export class ReactModeDemo extends LitElement {
@@ -33,8 +14,8 @@ export class ReactModeDemo extends LitElement {
 
   private mountReact() {
     const host = this.renderRoot.querySelector('.react-slot') as HTMLElement | null
-    if (!host) return
 
+    if (!host) return
     if (!this.reactRoot) {
       this.reactRoot = createRoot(host)
     }
@@ -66,14 +47,13 @@ export class ReactModeDemo extends LitElement {
 
   render() {
     return html`
-      ${jsx`
-        <section className="lit-shell">
-          <p data-kind="lit">
-            Lit renders this section and provides a slot for React children below.
-          </p>
-          <div className="react-slot"></div>
-        </section>
-      `}
+      <section class="lit-shell">
+        <p data-kind="lit">
+          Lit renders this section and provides a slot for React children below.
+        </p>
+        <div class="react-slot"></div>
+        ${DomBadge('Rendered with jsx (DOM runtime) via Lit')}
+      </section>
     `
   }
 }

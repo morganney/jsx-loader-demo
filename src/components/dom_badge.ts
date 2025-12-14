@@ -20,7 +20,7 @@ export const DomBadge = (label: string) => {
         ${counterText}
       </button>
     </article>
-  ` as HTMLDivElement
+  `
 
   return badge
 }

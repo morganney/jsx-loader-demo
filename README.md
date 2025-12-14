@@ -11,14 +11,23 @@ Minimal Rspack + Lit + React project that demonstrates how to use `@knighted/jsx
 
 ```bash
 npm install
-# Ensure the OXC WASM parser is present (required for the loader)
+npx @knighted/jsx init
+```
+
+> [!NOTE]
+> `npx @knighted/jsx init` downloads and wires up the OXC WASM parser (`@oxc-parser/binding-wasm32-wasi`) and related runtime pieces automatically.
+
+### Manual install (optional)
+
+Prefer to manage the WASM bits yourself? Run the existing helper script after install:
+
+```bash
 npm run setup:wasm
 ```
 
-> **Why the extra step?**
-> The `@oxc-parser/binding-wasm32-wasi` package ships with a CPU guard (`"cpu": ["wasm32"]`), so npm skips it on macOS/Linux by default. `setup:wasm` downloads and unpacks the binding manually so bundler builds can parse JSX templates. If you prefer, you can replace the script with `npm_config_ignore_platform=true npm install -D @oxc-parser/binding-wasm32-wasi@0.101.0` in your own workflow.
+> **Why the extra step exists:** the `@oxc-parser/binding-wasm32-wasi` package ships with a CPU guard (`"cpu": ["wasm32"]`), so npm skips it on macOS/Linux by default. `setup:wasm` downloads and unpacks the binding manually so bundler builds can parse JSX templates. If you prefer, you can replace the script with `npm_config_ignore_platform=true npm install -D @oxc-parser/binding-wasm32-wasi@0.101.0` in your own workflow.
 
-### Dev dependencies pulled in automatically
+#### Dev dependencies pulled in automatically
 
 - `@napi-rs/wasm-runtime`
 - `@emnapi/core`

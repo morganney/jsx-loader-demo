@@ -8,7 +8,14 @@
     "strict": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "plugins": [
+      {
+        "name": "@knighted/jsx-ts-plugin",
+        "tags": ["jsx", "reactJsx"],
+        "mode": "react"
+      }
+    ]
   },
   "include": ["src"]
 }

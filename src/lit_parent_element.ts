@@ -15,7 +15,7 @@ export class ReactModeDemo extends LitElement {
   static styles = reactModeStyles
 
   private mountReact() {
-    const host = this.renderRoot.querySelector('.react-slot')
+    const host = this.renderRoot.querySelector('.react-slot') as HTMLElement | null
 
     if (!host) return
     if (!this.reactRoot) {

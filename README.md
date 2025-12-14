@@ -49,6 +49,15 @@ src/
 
 `lit_parent_element.ts` renders its own DOM with Lit, embeds a DOM-only badge from `dom_badge.ts` (built with the DOM `jsx` helper), and uses `` reactJsx`…` `` to produce the React element hierarchy that gets mounted with `ReactDOM.createRoot`. The components in `src/components/` show both React code and plain DOM utilities living alongside Lit.
 
+### Why the TypeScript configs are split
+
+This demo intentionally mixes three “JSX” flavors—traditional React components, DOM-mode tagged templates via `jsx`, and React-mode tagged templates via `reactJsx`. Each flavor needs different `jsxImportSource` values so TypeScript uses the right intrinsic element typings. To keep squiggles accurate without forcing React files to adopt the DOM runtime (or vice versa), the repo ships a shared `tsconfig.base.json` plus two entry points:
+
+- `tsconfig.react.json` – standard React JSX config (default `tsc` run and CI check)
+- `tsconfig.dom.json` – overrides `jsxImportSource` to `@knighted/jsx` and only includes the DOM-tagged template files
+
+If your own project sticks with a single runtime—only React, or only the DOM helper—you can delete the extra config and rely on one `tsconfig.json` with the matching `jsxImportSource`. The split here is strictly to support the hybrid Lit + React + DOM example.
+
 ## Approaches: `@lit/react` vs `@knighted/jsx/loader`
 
 You can use the loader from [`@knighted/jsx`](https://www.npmjs.com/package/@knighted/jsx) as an alternative to [`@lit/react`](https://www.npmjs.com/package/@lit/react).

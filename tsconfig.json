@@ -1,21 +1,4 @@
 {
-  "compilerOptions": {
-    "target": "ES2022",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "lib": ["DOM", "ES2022"],
-    "jsx": "preserve",
-    "strict": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "plugins": [
-      {
-        "name": "@knighted/jsx-ts-plugin",
-        "tags": ["jsx", "reactJsx"],
-        "mode": "react"
-      }
-    ]
-  },
-  "include": ["src"]
+  "files": [],
+  "references": [{ "path": "./tsconfig.react.json" }, { "path": "./tsconfig.dom.json" }]
 }

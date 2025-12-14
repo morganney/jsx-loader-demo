@@ -1,6 +1,7 @@
 import { jsx } from '@knighted/jsx'
+import type { JsxRenderable } from '@knighted/jsx'
 
-export const DomBadge = (label: string) => {
+export const DomBadge = (label: JsxRenderable): HTMLElement => {
   let clicks = 0
   const counterText = jsx`<span>Clicked ${clicks} times</span>` as HTMLSpanElement
   const badge = jsx`

@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "@knighted/jsx",
+    "plugins": [
+      {
+        "name": "@knighted/jsx-ts-plugin",
+        "tagModes": {
+          "jsx": "dom"
+        }
+      }
+    ]
+  },
+  "include": ["src/components/dom_badge.ts"]
+}

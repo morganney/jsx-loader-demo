@@ -6,7 +6,7 @@
   "scripts": {
     "build": "rspack build --mode=production && mkdir -p dist && cp public/index.html dist/index.html",
     "dev": "rspack dev --mode=development",
-    "setup:wasm": "npm pack @oxc-parser/binding-wasm32-wasi@0.101.0 && mkdir -p node_modules/@oxc-parser/binding-wasm32-wasi && tar -xzf oxc-parser-binding-wasm32-wasi-0.101.0.tgz -C node_modules/@oxc-parser/binding-wasm32-wasi --strip-components=1 && rm -f oxc-parser-binding-wasm32-wasi-0.101.0.tgz",
+    "setup:wasm": "npm pack @oxc-parser/binding-wasm32-wasi@0.105.0 && mkdir -p node_modules/@oxc-parser/binding-wasm32-wasi && tar -xzf oxc-parser-binding-wasm32-wasi-0.105.0.tgz -C node_modules/@oxc-parser/binding-wasm32-wasi --strip-components=1 && rm -f oxc-parser-binding-wasm32-wasi-0.105.0.tgz",
     "clean": "rm -rf dist",
     "typecheck:react": "tsc -p tsconfig.react.json",
     "typecheck:dom": "tsc -p tsconfig.dom.json",
@@ -18,7 +18,7 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "@knighted/jsx": "^1.4.1",
+    "@knighted/jsx": "^1.5.0",
     "@napi-rs/wasm-runtime": "^1.1.0",
     "lit": "^3.3.1",
     "react": "^19.2.1",
@@ -40,6 +40,6 @@
     "singleQuote": true
   },
   "optionalDependencies": {
-    "@oxc-parser/binding-wasm32-wasi": "^0.99.0"
+    "@oxc-parser/binding-wasm32-wasi": "0.105.0"
   }
 }

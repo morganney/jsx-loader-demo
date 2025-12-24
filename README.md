@@ -25,7 +25,7 @@ Prefer to manage the WASM bits yourself? Run the existing helper script after in
 npm run setup:wasm
 ```
 
-> **Why the extra step exists:** the `@oxc-parser/binding-wasm32-wasi` package ships with a CPU guard (`"cpu": ["wasm32"]`), so npm skips it on macOS/Linux by default. `setup:wasm` downloads and unpacks the binding manually so bundler builds can parse JSX templates. If you prefer, you can replace the script with `npm_config_ignore_platform=true npm install -D @oxc-parser/binding-wasm32-wasi@0.101.0` in your own workflow.
+> **Why the extra step exists:** the `@oxc-parser/binding-wasm32-wasi` package ships with a CPU guard (`"cpu": ["wasm32"]`), so npm skips it on macOS/Linux by default. `setup:wasm` downloads and unpacks the binding manually so bundler builds can parse JSX templates.
 
 #### Dev dependencies pulled in automatically
 

@@ -4,8 +4,10 @@ import { rspack } from '@rspack/core'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
+const isProduction = process.env.NODE_ENV === 'production'
+
 const config = {
-  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
+  mode: isProduction ? 'production' : 'development',
   entry: {
     main: './src/main.ts',
   },
@@ -16,6 +18,7 @@ const config = {
     publicPath: process.env.GITHUB_PAGES ? '/jsx-loader-demo/' : '/',
   },
   target: 'web',
+  devtool: isProduction ? false : 'source-map',
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
     extensionAlias: {
@@ -58,6 +61,7 @@ const config = {
               tagModes: {
                 reactJsx: 'react',
               },
+              sourceMap: !isProduction,
             },
           },
         ],

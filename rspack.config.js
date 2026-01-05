@@ -59,6 +59,7 @@ const config = {
             options: {
               tags: ['jsx', 'reactJsx'],
               tagModes: {
+                jsx: 'dom',
                 reactJsx: 'react',
               },
               sourceMap: !isProduction,

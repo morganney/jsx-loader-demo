@@ -4,6 +4,19 @@ export const reactModeStyles = css`
   :host {
     display: block;
   }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin: 0.5rem 0;
+
+      strong {
+        color: #7df3ff;
+      }
+    }
+  }
   .lit-shell {
     border-radius: 12px;
     padding: 1.5rem;
@@ -34,6 +47,15 @@ export const reactModeStyles = css`
   }
   .dom-badge {
     margin-top: 1rem;
+
+    ul {
+      margin-bottom: 1rem;
+    }
+  }
+  .react-shell {
+    ul {
+      margin-top: 1rem;
+    }
   }
   button {
     border: none;

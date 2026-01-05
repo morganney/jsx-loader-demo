@@ -19,7 +19,7 @@ export class ReactModeDemo extends LitElement {
     const highlights = [
       'Nested reactJsx templates',
       'React mode inlining',
-      'No wasm needed for React runtime',
+      'No wasm shipped to browser',
     ]
 
     if (!host) return

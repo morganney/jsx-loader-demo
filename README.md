@@ -1,6 +1,6 @@
 # `@knighted/jsx/loader` Demo
 
-Minimal Rspack + Lit + React project that demonstrates how to use `@knighted/jsx` inside a bundle. A Lit custom element (`lit_parent_element.ts`) renders standard React components by combining the DOM-focused `jsx` helper with the React runtime `reactJsx` helper. Both helpers compile at build time (`tagModes` set to `dom` and `react`), so no browser-side JSX parser or WASM runtime is shipped in the bundle.
+Minimal Rspack + Lit + React project that demonstrates how to use `@knighted/jsx` inside a bundle. A Lit custom element (`lit_parent_element.ts`) renders standard React components by combining the DOM-focused `jsx` helper with the React runtime `reactJsx` helper. Both helpers compile at build time (`tagModes` set to `dom` and `react`), so the browser bundle does not include a JSX parser or WASM runtime.
 
 ## Prerequisites
 

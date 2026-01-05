@@ -69,5 +69,5 @@ Outputs `dist/main.js` plus the copied `dist/index.html`. Serve the `dist/` fold
 - `npm run dev` – start the dev server with HMR
 - `npm run build` – production bundle + static HTML copy
 - `npm run setup:wasm` – re-install the OXC parser binding (run after any `npm install`)
-- `npm run check-types` – `tsc --noEmit`
+- `npm run typecheck` – `tsc --noEmit`
 - `npm run prettier` – format sources

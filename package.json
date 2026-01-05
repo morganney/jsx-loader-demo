@@ -18,13 +18,12 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "@napi-rs/wasm-runtime": "^1.1.0",
+    "@knighted/jsx": "^1.7.1",
     "lit": "^3.3.1",
     "react": "^19.2.1",
     "react-dom": "^19.2.1"
   },
   "devDependencies": {
-    "@knighted/jsx": "^1.6.0",
     "@knighted/jsx-ts-plugin": "^0.3.2",
     "@rspack/cli": "^1.6.8",
     "@rspack/core": "^1.6.8",
@@ -38,8 +37,5 @@
     "printWidth": 90,
     "semi": false,
     "singleQuote": true
-  },
-  "optionalDependencies": {
-    "@oxc-parser/binding-wasm32-wasi": "^0.105.0"
   }
 }

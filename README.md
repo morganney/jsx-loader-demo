@@ -1,6 +1,6 @@
 # `@knighted/jsx/loader` Demo
 
-Minimal Rspack + Lit + React project that demonstrates how to use `@knighted/jsx` inside a bundle. A Lit custom element (`lit_parent_element.ts`) renders standard React components by combining the DOM-focused `jsx` helper with the React runtime `reactJsx` helper.
+Minimal Rspack + Lit + React project that demonstrates how to use `@knighted/jsx` inside a bundle. A Lit custom element (`lit_parent_element.ts`) renders standard React components by combining the DOM-focused `jsx` helper with the React runtime `reactJsx` helper. Both helpers compile at build time (`tagModes` set to `dom` and `react`), so no browser-side JSX parser or WASM runtime is shipped in the bundle.
 
 ## Prerequisites
 
@@ -11,29 +11,10 @@ Minimal Rspack + Lit + React project that demonstrates how to use `@knighted/jsx
 
 ```bash
 npm install
-npx @knighted/jsx init
 ```
 
 > [!NOTE]
-> `npx @knighted/jsx init` downloads and wires up the OXC WASM parser (`@oxc-parser/binding-wasm32-wasi`) and related runtime pieces automatically.
-
-### Manual install (optional)
-
-Prefer to manage the WASM bits yourself? Run the existing helper script after install:
-
-```bash
-npm run setup:wasm
-```
-
-> **Why the extra step exists:** the `@oxc-parser/binding-wasm32-wasi` package ships with a CPU guard (`"cpu": ["wasm32"]`), so npm skips it on macOS/Linux by default. `setup:wasm` downloads and unpacks the binding manually so bundler builds can parse JSX templates.
-
-#### Dev dependencies pulled in automatically
-
-- `@napi-rs/wasm-runtime`
-- `@emnapi/core`
-- `@emnapi/runtime`
-
-These power the WASM binding and are listed in `devDependencies` so you don’t have to install them separately.
+> With `tagModes` set to `dom` and `react`, the loader compiles templates ahead-of-time using the native OXC binding inside `oxc-parser`. The WASM parser (`@oxc-parser/binding-wasm32-wasi`) is only needed if you opt into the runtime/browser parser mode.
 
 ## Project layout
 
@@ -62,10 +43,10 @@ If your own project sticks with a single runtime—only React, or only the DOM h
 
 You can use the loader from [`@knighted/jsx`](https://www.npmjs.com/package/@knighted/jsx) as an alternative to [`@lit/react`](https://www.npmjs.com/package/@lit/react).
 
-| Approach               | How it works                                                                                                               | Pros                                                                                             | Cons                                                                                                     |
-| ---------------------- | -------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------- |
-| `@lit/react`           | Wrap a React component in a Lit wrapper that mounts via ReactDOM under the hood. Author normal TSX/JSX.                    | Familiar React authoring; no template literals; minimal setup.                                   | Requires wrapper components; less flexible for mixing DOM/React in one template.                         |
-| `@knighted/jsx/loader` | Use tagged templates: ` jsx`` ` returns DOM nodes for Lit; ` reactJsx`` ` returns React elements you render with ReactDOM. | Mix Lit DOM and React elements in the same file; works in `.ts` with helpers; no wrapper needed. | Needs loader + WASM parser setup; JSX lives in template literals; must mount the React subtree manually. |
+| Approach               | How it works                                                                                                               | Pros                                                                                             | Cons                                                                                     |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
+| `@lit/react`           | Wrap a React component in a Lit wrapper that mounts via ReactDOM under the hood. Author normal TSX/JSX.                    | Familiar React authoring; no template literals; minimal setup.                                   | Requires wrapper components; less flexible for mixing DOM/React in one template.         |
+| `@knighted/jsx/loader` | Use tagged templates: ` jsx`` ` returns DOM nodes for Lit; ` reactJsx`` ` returns React elements you render with ReactDOM. | Mix Lit DOM and React elements in the same file; works in `.ts` with helpers; no wrapper needed. | Needs the loader; JSX lives in template literals; must mount the React subtree manually. |
 
 ## Development
 

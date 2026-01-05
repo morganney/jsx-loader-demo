@@ -16,6 +16,11 @@ export class ReactModeDemo extends LitElement {
 
   private mountReact() {
     const host = this.renderRoot.querySelector('.react-slot') as HTMLElement | null
+    const highlights = [
+      'Nested reactJsx templates',
+      'React mode inlining',
+      'No wasm needed for React runtime',
+    ]
 
     if (!host) return
     if (!this.reactRoot) {
@@ -26,6 +31,13 @@ export class ReactModeDemo extends LitElement {
       <div className="react-stage">
         <${ReactShell}>
           <${ReactBadge} heading="Lit + React with reactJsx" />
+          <ul>
+            ${highlights.map(
+              entry => reactJsx`
+              <li key=${entry}>${entry}${' '}${reactJsx`<strong>✓</strong>`}</li>
+            `,
+            )}
+          </ul>
         </${ReactShell}>
       </div>
     `
